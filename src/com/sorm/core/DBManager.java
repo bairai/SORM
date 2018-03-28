@@ -21,6 +21,7 @@ public class DBManager {
         conf.setUrl(GlobalSet.url);
         conf.setUsingDB(GlobalSet.usingDB);
         conf.setSrcPath(GlobalSet.srcPath);
+        conf.setQueryClass(GlobalSet.queryClass);
     }
     public static Connection getConn(){
         try {

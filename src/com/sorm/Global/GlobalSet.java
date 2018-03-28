@@ -8,4 +8,5 @@ public class GlobalSet {
     public static final String usingDB="mysql";
     public static final String srcPath="C:/Users/Administrator/IdeaProjects/SORM";
     public static final String poPackage="com.sorm.po";
+    public static final String queryClass="com.sorm.core.MySqlQuery";
 }

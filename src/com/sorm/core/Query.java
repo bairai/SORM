@@ -15,7 +15,7 @@ import java.util.List;
  * 负责对外提供服务的核心类
  * @author :fanghaoda
  */
-public abstract class Query {
+public abstract class Query implements Cloneable{
     /**
      * 采用模版方法模式将JDBC操作封装成模版，便于重用
      * @param sql SQL语句
@@ -254,5 +254,9 @@ public abstract class Query {
      */
     public abstract Object queryPagenate(int pageNum,int size);
 
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 
 }
