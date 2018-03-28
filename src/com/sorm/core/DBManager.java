@@ -1,5 +1,6 @@
 package com.sorm.core;
 
+import com.sorm.Global.GlobalSet;
 import com.sorm.bean.Configuration;
 
 import java.io.IOException;
@@ -12,25 +13,19 @@ import java.util.Properties;
 public class DBManager {
     private static Configuration conf;
     static { //静态代码块 加载一次
-        Properties pros=new Properties();
-        try {
-            pros.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("db.properties"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         conf =new Configuration();
-        conf.setDriver(pros.getProperty("driver"));
-        conf.setPoPackage("com\\sorm\\po");
-        conf.setPsw(pros.getProperty("psw"));
-        conf.setUser(pros.getProperty("user"));
-        conf.setUrl(pros.getProperty("url"));
-        conf.setUsingDB(pros.getProperty("usingDB"));
-        conf.setSrcPath("srcPath");
+        conf.setDriver(GlobalSet.driver);
+        conf.setPoPackage(GlobalSet.poPackage);
+        conf.setPsw(GlobalSet.psw);
+        conf.setUser(GlobalSet.user);
+        conf.setUrl(GlobalSet.url);
+        conf.setUsingDB(GlobalSet.usingDB);
+        conf.setSrcPath(GlobalSet.srcPath);
     }
     public static Connection getConn(){
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            return DriverManager.getConnection("jdbc:mysql://localhost:3306/sorm?useSSL=true","root","8404"); //直接建立连接，后期增加连接池处理，提高效率！
+            Class.forName(conf.getDriver());
+            return DriverManager.getConnection(conf.getUrl(),conf.getUser(),conf.getPsw()); //直接建立连接，后期增加连接池处理，提高效率！//password无法被正确引用
         }catch (ClassNotFoundException e){
             e.printStackTrace();
 

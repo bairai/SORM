@@ -59,7 +59,7 @@ public class Configuration {
       return psw;
    }
 
-   public void setPsw(String ps) {
+   public void setPsw(String psw) {
       this.psw = psw;
    }
 
@@ -90,7 +90,7 @@ public class Configuration {
    public Configuration() {
    }
 
-   public Configuration(String driver, String url, String user, String ps, String usingDB, String srcPath, String poPackage) {
+   public Configuration(String driver, String url, String user, String psw, String usingDB, String srcPath, String poPackage) {
       super();
       this.driver = driver;
       this.url = url;
@@ -100,5 +100,6 @@ public class Configuration {
       this.srcPath = srcPath;
       this.poPackage = poPackage;
    }
+
 
 }
