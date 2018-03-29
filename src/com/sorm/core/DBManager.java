@@ -21,17 +21,25 @@ public class DBManager {
      */
     private static DBConnPool pool;
     static { //静态代码块 加载一次
+        Properties properties=new Properties();
+
+        try {
+            properties.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("db.properties"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         conf =new Configuration();
-        conf.setDriver(GlobalSet.driver);
-        conf.setPoPackage(GlobalSet.poPackage);
-        conf.setPsw(GlobalSet.psw);
-        conf.setUser(GlobalSet.user);
-        conf.setUrl(GlobalSet.url);
-        conf.setUsingDB(GlobalSet.usingDB);
-        conf.setSrcPath(GlobalSet.srcPath);
-        conf.setQueryClass(GlobalSet.queryClass);
-        conf.setPoolMaxSize(GlobalSet.POOL_MAX_SIZE);
-        conf.setPoolMinSize(GlobalSet.POOL_MIN_SIZE);
+        conf.setDriver(properties.getProperty("driver"));
+        conf.setPoPackage(properties.getProperty("poPackage"));
+        conf.setPsw(properties.getProperty("psw"));
+        conf.setUser(properties.getProperty("user"));
+        conf.setUrl(properties.getProperty("url"));
+        conf.setUsingDB(properties.getProperty("usingDB"));
+        conf.setSrcPath(properties.getProperty("srcPath"));
+        conf.setQueryClass(properties.getProperty("queryClass"));
+        conf.setPoolMaxSize(Integer.getInteger(properties.getProperty("POOL_MAX_SIZE")));
+        conf.setPoolMinSize(Integer.getInteger(properties.getProperty("POOL_MIN_SIZE")));
 
         try {
             Class.forName("com.sorm.core.TableContext");
