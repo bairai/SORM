@@ -1,6 +1,6 @@
 package com.sorm.core;
 
-import com.sorm.Global.GlobalSet;
+
 import com.sorm.bean.Configuration;
 import com.sorm.pool.DBConnPool;
 
