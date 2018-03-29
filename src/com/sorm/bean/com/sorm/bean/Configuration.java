@@ -35,6 +35,15 @@ public class Configuration {
     * 项目使用的查询类的路径
     */
    private String queryClass;
+   /**
+    * 连接池最小连接数
+    */
+   private int poolMinSize;
+   /**
+    * 连接池最大连接数
+    */
+   private int poolMaxSize;
+
    public String getDriver() {
       return driver;
    }
@@ -99,10 +108,26 @@ public class Configuration {
       this.poPackage = poPackage;
    }
 
+   public int getPoolMinSize() {
+      return poolMinSize;
+   }
+
+   public void setPoolMinSize(int poolMinSize) {
+      this.poolMinSize = poolMinSize;
+   }
+
+   public int getPoolMaxSize() {
+      return poolMaxSize;
+   }
+
+   public void setPoolMaxSize(int poolMaxSize) {
+      this.poolMaxSize = poolMaxSize;
+   }
+
    public Configuration() {
    }
 
-   public Configuration(String driver, String url, String user, String psw, String usingDB, String srcPath, String poPackage, String queryClass) {
+   public Configuration(String driver, String url, String user, String psw, String usingDB, String srcPath, String poPackage, String queryClass, int poolMinSize, int poolMaxSize) {
       this.driver = driver;
       this.url = url;
       this.user = user;
@@ -111,5 +136,7 @@ public class Configuration {
       this.srcPath = srcPath;
       this.poPackage = poPackage;
       this.queryClass = queryClass;
+      this.poolMinSize = poolMinSize;
+      this.poolMaxSize = poolMaxSize;
    }
 }
