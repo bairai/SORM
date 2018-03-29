@@ -212,7 +212,7 @@ public abstract class Query implements Cloneable{
      * @return 查询的结果
      */
     public Object queryUniqueRow(String sql, Class clazz, Object[] params){ List list=queryRows(sql,clazz,params);
-        return (list==null&&list.size()>0)?null:list.get(0);}
+        return (list==null||list.size()>0)?list.get(0):null;}
     /**
      * 查询 返回一个值（），并将值返回
      * @param sql 查询语句
