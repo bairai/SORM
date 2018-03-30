@@ -28,9 +28,11 @@ public class ReflectUtils {
 
         Method M= null;
         try {
-            M = obj.getClass().getDeclaredMethod("set"+ StringUtils.firstChar2UpperCase(coulumnName),
-                    columnValue.getClass());
-                M.invoke(obj,columnValue);
+            if(columnValue!=null) {
+                M = obj.getClass().getDeclaredMethod("set" + StringUtils.firstChar2UpperCase(coulumnName),
+                        columnValue.getClass());
+                M.invoke(obj, columnValue);
+            }
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         }catch (IllegalAccessException e) {
